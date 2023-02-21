@@ -1,0 +1,67 @@
+public class Pelaaja implements java.io.Serializable{
+  protected int panosNyt;
+  protected int panos;
+  protected int rahat;
+  public boolean foldaa;
+  protected Pelikortti kortti;
+  protected int[] muidenKortit;
+  
+  public Pelaaja(){
+  }
+  public Pelaaja(Pelaaja p){
+    this.panos=p.kerroPanos();
+    this.rahat=p.kerroRahat();
+    this.foldaa=p.foldaako();
+    this.kortti=p.kerroKortti();
+  }
+  public Pelaaja(int panos, int rahat, boolean foldaa, Pelikortti kortti){
+    this.panos=panos;
+    this.rahat=rahat;
+    this.foldaa=foldaa;
+    this.kortti=kortti;
+  }
+  
+  public void mietiPanos(){ //Ykisttäiset pelaajat ylikirjoittavat tämän
+  }
+  public void asetaRahat(int rahat){
+    this.rahat=rahat;
+  }
+  public void asetaPanosNyt(int panosNyt){
+    this.panosNyt=panosNyt;
+  }
+  public void maksaKierros(){
+    this.korotaPanos(5);
+  }
+  public void korotaPanos(int panos){
+    this.panos+=panos;
+    this.rahat-=panos;
+  }
+  public void nollaaPanos(){
+    this.panos=0;
+  }
+  public void foldaa(boolean foldaa){
+    this.foldaa=foldaa;
+  }
+  public boolean foldaako(){
+    return this.foldaa;
+  }
+  public int kerroPanos(){
+    return this.panos;
+  }
+  public int kerroRahat(){
+    return this.rahat;
+  }
+  public void otaKortti(Korttipakka a){
+    this.kortti= a.nostaKortti();
+  }
+  public Pelikortti kerroKortti(){
+    return this.kortti;
+  }
+  public void asetaMuut(int[] muidenKortit){
+    this.muidenKortit=muidenKortit;
+  }
+  public String toString(){
+    return "Pelaaja";
+  }
+}
+  
